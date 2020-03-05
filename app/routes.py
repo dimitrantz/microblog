@@ -1,9 +1,8 @@
 from flask import render_template, flash, redirect, url_for, request
-from app import flaskapp
+from app import flaskapp, db
 from app.forms import LoginForm
 from werkzeug.urls import url_parse
 
-from app import db
 from app.forms import RegistrationForm
 
 from flask_login import current_user, login_user, logout_user, login_required
@@ -13,7 +12,17 @@ from app.models import User
 @flaskapp.route('/index')
 @login_required
 def index():
-    return render_template('index.html', title='Home', user=user, posts = posts)
+    posts = [
+        {
+            'author': {'username': 'John'},
+            'body': 'Beautiful day in Portland!'
+        },
+        {
+            'author': {'username': 'Susan'},
+            'body': 'The Avengers movie was so cool!'
+        }
+    ]
+    return render_template('index.html', title='Home', posts = posts)
 
 @flaskapp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -37,7 +46,7 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-@app.route('/register', methods=['GET', 'POST'])
+@flaskapp.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
