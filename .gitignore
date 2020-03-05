@@ -18,8 +18,8 @@ develop-eggs
 lib
 lib64
 __pycache__
-*.pyc
-settings.json
+app/*.pyc
+.vscode
 
 # Installer logs
 pip-log.txt
