@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_mail import Mail
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -12,6 +13,8 @@ flaskapp = Flask(__name__)
 flaskapp.config.from_object(Config)
 db = SQLAlchemy(flaskapp)
 migrate = Migrate(flaskapp, db)
+
+mail = Mail(flaskapp)
 
 login = LoginManager(flaskapp)
 login.login_view = 'login'
