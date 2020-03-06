@@ -23,7 +23,7 @@ app/*.pyc
 logs
 .env
 elasticsearch-7.6.1
-
+.DS_Store
 # Installer logs
 pip-log.txt
 
