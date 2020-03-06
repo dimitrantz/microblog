@@ -18,7 +18,10 @@ class Config(object):
     ADMINS = ['your-email@example.com']
 
     # Posts per page configuration.
-    POSTS_PER_PAGE = 10
+    POSTS_PER_PAGE = 3
 
     # Supported languages list.
     LANGUAGES = ['en', 'es']
+
+    #Add Microsoft Translator API key to the configuration key value: 9fc365a267e84d6ca470aaec23128b70
+    MS_TRANSLATOR_KEY = '9fc365a267e84d6ca470aaec23128b70'
