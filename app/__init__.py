@@ -1,28 +1,30 @@
-from flask import Flask
-from flask_mail import Mail
-from config import Config
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-from flask_login import LoginManager
-from flask_bootstrap import Bootstrap
-from flask_moment import Moment
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
+from flask import Flask, request
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from flask_login import LoginManager
+from flask_mail import Mail
+from flask_bootstrap import Bootstrap
+from flask_moment import Moment
+from flask_babel import Babel, lazy_gettext as _l
+from config import Config
 
 flaskapp = Flask(__name__)
 flaskapp.config.from_object(Config)
 db = SQLAlchemy(flaskapp)
 migrate = Migrate(flaskapp, db)
-
-mail = Mail(flaskapp)
-bootstrap = Bootstrap(flaskapp)
 login = LoginManager(flaskapp)
 login.login_view = 'login'
+login.login_message = _l('Please log in to access this page.')
+mail = Mail(flaskapp)
+bootstrap = Bootstrap(flaskapp)
 moment = Moment(flaskapp)
+babel = Babel(flaskapp)
+
 
 from app import routes, models, errors
-
 
 if not flaskapp.debug:
     if flaskapp.config['MAIL_SERVER']:
@@ -52,3 +54,9 @@ if not flaskapp.debug:
 
         flaskapp.logger.setLevel(logging.INFO)
         flaskapp.logger.info('Microblog startup')
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(flaskapp.config['LANGUAGES'])
+
+

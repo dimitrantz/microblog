@@ -19,3 +19,6 @@ class Config(object):
 
     # Posts per page configuration.
     POSTS_PER_PAGE = 10
+
+    # Supported languages list.
+    LANGUAGES = ['en', 'es']

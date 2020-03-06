@@ -1,5 +1,6 @@
-from app import flaskapp, db
+from app import flaskapp, db, cli
 from app.models import User, Post
+
 
 @flaskapp.shell_context_processor
 def make_shell_context():
