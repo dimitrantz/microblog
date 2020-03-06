@@ -24,4 +24,6 @@ class Config(object):
     # Supported languages list.
     LANGUAGES = ['en', 'es']
     #Add Microsoft Translator API key to the configuration key value: 9fc365a267e84d6ca470aaec23128b70
-    MS_TRANSLATOR_KEY = '9fc365a267e84d6ca470aaec23128b70'
+    MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY')
+    # Elasticsearch configuration.
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')

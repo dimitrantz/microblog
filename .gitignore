@@ -21,6 +21,8 @@ __pycache__
 app/*.pyc
 .vscode
 logs
+.env
+elasticsearch-7.6.1
 
 # Installer logs
 pip-log.txt

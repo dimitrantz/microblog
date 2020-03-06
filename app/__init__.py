@@ -9,7 +9,9 @@ from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l
+from elasticsearch import Elasticsearch
 from config import Config
+
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -33,6 +35,10 @@ def create_app(config_class=Config):
     bootstrap.init_app(flaskapp)
     moment.init_app(flaskapp)
     babel.init_app(flaskapp)
+    #flaskapp.elasticsearch = Elasticsearch([flaskapp.config['ELASTICSEARCH_URL']]) \
+     #   if flaskapp.config['ELASTICSEARCH_URL'] else None
+    flaskapp.elasticsearch = Elasticsearch([flaskapp.config['ELASTICSEARCH_URL']]) \
+        if flaskapp.config['ELASTICSEARCH_URL'] else None
 
     from app.errors import bp as errors_bp
     flaskapp.register_blueprint(errors_bp)
