@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
+from flask_moment import Moment
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
@@ -18,6 +19,7 @@ mail = Mail(flaskapp)
 bootstrap = Bootstrap(flaskapp)
 login = LoginManager(flaskapp)
 login.login_view = 'login'
+moment = Moment(flaskapp)
 
 from app import routes, models, errors
 
