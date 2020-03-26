@@ -66,7 +66,7 @@ def create_app(config_class=Config):
             mail_handler.setLevel(logging.ERROR)
             flaskapp.logger.addHandler(mail_handler)
      
-     if flaskapp.config['LOG_TO_STDOUT']:
+        if flaskapp.config['LOG_TO_STDOUT']:
             stream_handler = logging.StreamHandler()
             stream_handler.setLevel(logging.INFO)
             flaskapp.logger.addHandler(stream_handler)

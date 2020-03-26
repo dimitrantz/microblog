@@ -20,7 +20,7 @@ class Config(object):
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['your-email@example.com']
     # Posts per page configuration.
-    POSTS_PER_PAGE = 3
+    POSTS_PER_PAGE = 5
     # Supported languages list.
     LANGUAGES = ['en', 'es']
     #Add Microsoft Translator API key to the configuration key value: 9fc365a267e84d6ca470aaec23128b70
