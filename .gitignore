@@ -24,6 +24,7 @@ logs
 .env
 elasticsearch-7.6.1
 .DS_Store
+*rdb
 # Installer logs
 pip-log.txt
 

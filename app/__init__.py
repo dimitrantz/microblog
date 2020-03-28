@@ -11,7 +11,8 @@ from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l
 from elasticsearch import Elasticsearch
 from config import Config
-
+from redis import Redis
+import rq
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -37,6 +38,10 @@ def create_app(config_class=Config):
     babel.init_app(flaskapp)
     #flaskapp.elasticsearch = Elasticsearch([flaskapp.config['ELASTICSEARCH_URL']]) \
      #   if flaskapp.config['ELASTICSEARCH_URL'] else None
+    
+    flaskapp.redis = Redis.from_url(flaskapp.config['REDIS_URL'])
+    flaskapp.task_queue = rq.Queue('microblog-tasks', connection=flaskapp.redis)
+    
     flaskapp.elasticsearch = Elasticsearch([flaskapp.config['ELASTICSEARCH_URL']]) \
         if flaskapp.config['ELASTICSEARCH_URL'] else None
 
