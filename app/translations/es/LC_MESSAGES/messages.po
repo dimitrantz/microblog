@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-03-28 23:55+0200\n"
+"POT-Creation-Date: 2020-03-29 22:02+0300\n"
 "PO-Revision-Date: 2020-03-06 12:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -99,7 +99,7 @@ msgstr ""
 msgid "About me"
 msgstr ""
 
-#: app/main/forms.py:13 app/main/forms.py:28
+#: app/main/forms.py:13 app/main/forms.py:28 app/main/forms.py:45
 msgid "Submit"
 msgstr ""
 
@@ -111,12 +111,8 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: app/main/forms.py:42
+#: app/main/forms.py:43
 msgid "Message"
-msgstr ""
-
-#: app/main/forms.py:44
-msgid "Sumbit"
 msgstr ""
 
 #: app/main/routes.py:36
@@ -170,11 +166,11 @@ msgstr ""
 msgid "Send Message"
 msgstr ""
 
-#: app/main/routes.py:211
+#: app/main/routes.py:199
 msgid "An export task is currently in progress"
 msgstr ""
 
-#: app/main/routes.py:213
+#: app/main/routes.py:201
 msgid "Exporting posts..."
 msgstr ""
 
@@ -195,19 +191,19 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: app/templates/base.html:37 app/templates/messages.html:4
+#: app/templates/base.html:36 app/templates/messages.html:4
 msgid "Messages"
 msgstr ""
 
-#: app/templates/base.html:49
+#: app/templates/base.html:45
 msgid "Profile"
 msgstr ""
 
-#: app/templates/base.html:50
+#: app/templates/base.html:46
 msgid "Logout"
 msgstr ""
 
-#: app/templates/base.html:100
+#: app/templates/base.html:95
 msgid "Error: Could not contact server."
 msgstr ""
 
@@ -216,11 +212,11 @@ msgstr ""
 msgid "Hi, %(username)s!"
 msgstr ""
 
-#: app/templates/index.html:17 app/templates/user.html:45
+#: app/templates/index.html:17 app/templates/user.html:37
 msgid "Newer posts"
 msgstr ""
 
-#: app/templates/index.html:22 app/templates/user.html:50
+#: app/templates/index.html:22 app/templates/user.html:42
 msgid "Older posts"
 msgstr ""
 
@@ -253,16 +249,16 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: app/templates/user.html:11 app/templates/user_popup.html:13
+#: app/templates/user.html:11 app/templates/user_popup.html:9
 msgid "Last seen on"
 msgstr ""
 
-#: app/templates/user.html:13 app/templates/user_popup.html:16
+#: app/templates/user.html:13 app/templates/user_popup.html:11
 #, python-format
 msgid "%(count)d followers"
 msgstr ""
 
-#: app/templates/user.html:13 app/templates/user_popup.html:17
+#: app/templates/user.html:13 app/templates/user_popup.html:11
 #, python-format
 msgid "%(count)d following"
 msgstr ""
@@ -271,20 +267,20 @@ msgstr ""
 msgid "Edit your profile"
 msgstr ""
 
-#: app/templates/user.html:19
+#: app/templates/user.html:17
 msgid "Export your posts"
 msgstr ""
 
-#: app/templates/user.html:27
-msgid "Send private message"
-msgstr ""
-
-#: app/templates/user.html:31 app/templates/user_popup.html:21
+#: app/templates/user.html:20 app/templates/user_popup.html:14
 msgid "Follow"
 msgstr ""
 
-#: app/templates/user.html:33 app/templates/user_popup.html:25
+#: app/templates/user.html:22 app/templates/user_popup.html:16
 msgid "Unfollow"
+msgstr ""
+
+#: app/templates/user.html:25
+msgid "Send private message"
 msgstr ""
 
 #: app/templates/auth/login.html:12
@@ -322,4 +318,7 @@ msgstr ""
 #: app/templates/errors/500.html:5
 msgid "The administrator has been notified. Sorry for the inconvenience!"
 msgstr ""
+
+#~ msgid "Sumbit"
+#~ msgstr ""
 

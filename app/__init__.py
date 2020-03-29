@@ -36,8 +36,6 @@ def create_app(config_class=Config):
     bootstrap.init_app(flaskapp)
     moment.init_app(flaskapp)
     babel.init_app(flaskapp)
-    #flaskapp.elasticsearch = Elasticsearch([flaskapp.config['ELASTICSEARCH_URL']]) \
-     #   if flaskapp.config['ELASTICSEARCH_URL'] else None
     
     flaskapp.redis = Redis.from_url(flaskapp.config['REDIS_URL'])
     flaskapp.task_queue = rq.Queue('microblog-tasks', connection=flaskapp.redis)
@@ -53,6 +51,10 @@ def create_app(config_class=Config):
 
     from app.main import bp as main_bp
     flaskapp.register_blueprint(main_bp)
+
+    from app.api import bp as api_bp
+    flaskapp.register_blueprint(api_bp, url_prefix='/api')
+
 
     if not flaskapp.debug and not flaskapp.testing:
         if flaskapp.config['MAIL_SERVER']:

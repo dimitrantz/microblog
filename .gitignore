@@ -43,5 +43,5 @@ nosetests.xml
 .pydevproject
 
 mymicroblogenv
-microblog_app.db
+app.db
 microblog.log*

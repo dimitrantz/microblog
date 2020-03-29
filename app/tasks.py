@@ -1,15 +1,15 @@
-from rq import get_current_job
-from flask import render_template
-from app.email import send_email
-from app import db, create_app
-from app.models import Task, User, Post
-import time
 import json
 import sys
-
+import time
+from flask import render_template
+from rq import get_current_job
+from app import create_app, db
+from app.models import User, Post, Task
+from app.email import send_email
 
 app = create_app()
 app.app_context().push()
+
 
 def _set_task_progress(progress):
     job = get_current_job()
@@ -23,10 +23,9 @@ def _set_task_progress(progress):
             task.complete = True
         db.session.commit()
 
+
 def export_posts(user_id):
     try:
-        # read user posts from database
-        
         user = User.query.get(user_id)
         _set_task_progress(0)
         data = []
@@ -39,15 +38,14 @@ def export_posts(user_id):
             i += 1
             _set_task_progress(100 * i // total_posts)
 
-        # send email with data to user
         send_email('[Microblog] Your blog posts',
                 sender=app.config['ADMINS'][0], recipients=[user.email],
                 text_body=render_template('email/export_posts.txt', user=user),
-                html_body=render_template('email/export_posts.html', user=user),
+                html_body=render_template('email/export_posts.html',
+                                          user=user),
                 attachments=[('posts.json', 'application/json',
                               json.dumps({'posts': data}, indent=4))],
                 sync=True)
     except:
-        # handle unexpected errors
         _set_task_progress(100)
-        app.logger.error("Unhandled exception", exc_info=sys.exc_info())
+        app.logger.error('Unhandled exception', exc_info=sys.exc_info())
